@@ -1,0 +1,90 @@
+[
+  {
+    "timestamp": "2026-05-31T16:01:23.157549",
+    "filename": "test_lesion.jpg",
+    "prediction": "Vascular Lesions",
+    "confidence": 22.1,
+    "risk_level": "Low",
+    "classifier_type": "ABCD Rule-Based (clinical heuristic)",
+    "roi_detected": true,
+    "processing_time_ms": 2021.6,
+    "error": null
+  },
+  {
+    "timestamp": "2026-05-31T16:01:36.266964",
+    "filename": "test_lesion.jpg",
+    "prediction": "Vascular Lesions",
+    "confidence": 22.1,
+    "risk_level": "Low",
+    "classifier_type": "ABCD Rule-Based (clinical heuristic)",
+    "roi_detected": true,
+    "processing_time_ms": 123.7,
+    "error": null
+  },
+  {
+    "timestamp": "2026-05-31T16:02:02.645717",
+    "filename": "test_lesion.jpg",
+    "prediction": "Vascular Lesions",
+    "confidence": 22.1,
+    "risk_level": "Low",
+    "classifier_type": "ABCD Rule-Based (clinical heuristic)",
+    "roi_detected": true,
+    "processing_time_ms": 1539.6,
+    "error": null
+  },
+  {
+    "timestamp": "2026-05-31T16:03:00.065891",
+    "filename": "test_lesion.jpg",
+    "prediction": "Vascular Lesions",
+    "confidence": 22.1,
+    "risk_level": "Low",
+    "classifier_type": "ABCD Rule-Based (clinical heuristic)",
+    "roi_detected": true,
+    "processing_time_ms": 1882.3,
+    "error": null
+  },
+  {
+    "timestamp": "2026-05-31T16:23:01.917214",
+    "filename": "test_lesion.jpg",
+    "prediction": "Vascular Lesions",
+    "confidence": 22.1,
+    "risk_level": "Low",
+    "classifier_type": "ABCD Rule-Based (clinical heuristic)",
+    "roi_detected": true,
+    "processing_time_ms": 1993.5,
+    "error": null
+  },
+  {
+    "timestamp": "2026-05-31T16:26:56.665685",
+    "filename": "01-Benh-ngoai-da-TE-22909.jpg.webp",
+    "prediction": "Basal Cell Carcinoma",
+    "confidence": 23.0,
+    "risk_level": "High",
+    "classifier_type": "ABCD Rule-Based (clinical heuristic)",
+    "roi_detected": true,
+    "processing_time_ms": 899.1,
+    "error": null
+  },
+  {
+    "timestamp": "2026-05-31T16:30:26.620236",
+    "filename": "01-Benh-ngoai-da-TE-22909.jpg.webp",
+    "prediction": "Actinic Keratosis / Intraepithelial Carcinoma",
+    "confidence": 21.2,
+    "risk_level": "High",
+    "classifier_type": "ABCD Rule-Based (clinical heuristic)",
+    "roi_detected": true,
+    "processing_time_ms": 766.8,
+    "error": null
+  },
+  {
+    "timestamp": "2026-05-31T16:45:50.111224",
+    "filename": "test_lesion.jpg",
+    "prediction": "Dermatofibroma",
+    "confidence": 21.3,
+    "risk_level": "Low",
+    "classifier_type": "ABCD Rule-Based (clinical heuristic)",
+    "roi_detected": true,
+    "processing_time_ms": 2639.6,
+    "error": null
+  }
+]

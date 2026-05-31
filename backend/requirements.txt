@@ -1,0 +1,29 @@
+# Core Framework
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+python-multipart==0.0.20
+
+# AI / ML
+torch==2.5.1
+torchvision==0.20.1
+segmentation-models-pytorch==0.3.4
+timm==1.0.12
+einops==0.8.0
+
+# Image Processing
+opencv-python-headless==4.10.0.84
+Pillow==11.1.0
+numpy==1.26.4
+scikit-image==0.24.0
+
+# Data Validation
+pydantic==2.10.4
+pydantic-settings==2.7.0
+
+# Utilities
+python-jose[cryptography]==3.3.0
+aiofiles==24.1.0
+httpx==0.28.1
+
+# Logging
+loguru==0.7.3
