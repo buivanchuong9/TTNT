@@ -1,13 +1,13 @@
 """
-FastAPI Application Entry Point
-────────────────────────────────
-Skin Lesion Analysis System — Two-Stage AI Pipeline
-
+FastAPI Application Entry Point — DermAI Platform v2
+──────────────────────────────────────────────────────
 Architecture layers (top → bottom):
-  Presentation  → React frontend (separate process)
+  Presentation  → React frontend (Vite dev server / production build)
   API           → This FastAPI application
-  AI Inference  → ai/segmentation.py + ai/classification.py
-  Medical KB    → knowledge/disease_labels.json
+  Inference     → ai/quality_checker + ai/segmentation + ai/classification
+  Knowledge     → knowledge/disease_labels.json
+  Logging       → logs/inference_YYYYMMDD.json
+  Analytics     → api/routes/analytics.py
 """
 from __future__ import annotations
 
@@ -31,26 +31,27 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# ── Application lifespan (startup / shutdown hooks) ───────────────────────────
+# ── Application lifespan ──────────────────────────────────────────────────────
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # ── STARTUP ──────────────────────────────────────────────────────────────
     logger.info("=" * 60)
-    logger.info(f"  {settings.PROJECT_NAME} v{settings.VERSION}")
+    logger.info(f"  {settings.PROJECT_NAME}  v{settings.VERSION}")
+    logger.info(f"  Model: {settings.MODEL_VERSION}")
     logger.info("=" * 60)
 
     from ai.pipeline import pipeline
-    pipeline.initialise()       # Load both AI models into memory
+    pipeline.initialise()
 
     from knowledge.knowledge_base import get_knowledge_base
-    kb = get_knowledge_base()   # Warm knowledge base cache
+    kb = get_knowledge_base()
     logger.info(f"Knowledge base loaded: {kb.total()} disease entries")
 
-    yield  # Application is running
+    yield
 
     # ── SHUTDOWN ─────────────────────────────────────────────────────────────
-    logger.info("Shutting down inference pipeline …")
+    logger.info("Shutting down DermAI inference pipeline …")
 
 
 # ── FastAPI application ───────────────────────────────────────────────────────
@@ -65,38 +66,40 @@ app = FastAPI(
     openapi_url="/openapi.json",
 )
 
-# ── CORS middleware ───────────────────────────────────────────────────────────
-# Allow the React dev server (port 5173/3000) to reach this API.
+# ── CORS — use explicit whitelist, not wildcard ───────────────────────────────
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],      # Open for dev; restrict in production
-    allow_credentials=False,  # Must be False when allow_origins=["*"]
+    allow_origins=settings.CORS_ORIGINS,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# ── Static file serving ───────────────────────────────────────────────────────
+# ── Static files ──────────────────────────────────────────────────────────────
 app.mount("/static", StaticFiles(directory=str(settings.STATIC_DIR)), name="static")
 
 # ── Route registration ────────────────────────────────────────────────────────
-from api.routes import analyze, health
+from api.routes import analyze, analytics, health
 
-app.include_router(health.router,  prefix=settings.API_PREFIX)
-app.include_router(analyze.router, prefix=settings.API_PREFIX)
+app.include_router(health.router,    prefix=settings.API_PREFIX)
+app.include_router(analyze.router,   prefix=settings.API_PREFIX)
+app.include_router(analytics.router, prefix=settings.API_PREFIX)
 
 
 @app.get("/", tags=["System"], summary="API root")
 async def root():
     return {
-        "name":    settings.PROJECT_NAME,
-        "version": settings.VERSION,
-        "docs":    "/docs",
-        "health":  f"{settings.API_PREFIX}/health",
-        "analyze": f"{settings.API_PREFIX}/analyze",
+        "name":      settings.PROJECT_NAME,
+        "version":   settings.VERSION,
+        "model":     settings.MODEL_VERSION,
+        "docs":      "/docs",
+        "health":    f"{settings.API_PREFIX}/health",
+        "analyze":   f"{settings.API_PREFIX}/analyze",
+        "analytics": f"{settings.API_PREFIX}/analytics/summary",
     }
 
 
-# ── Development entry point ───────────────────────────────────────────────────
+# ── Dev entry point ───────────────────────────────────────────────────────────
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(

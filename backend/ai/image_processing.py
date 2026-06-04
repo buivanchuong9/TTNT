@@ -4,12 +4,22 @@ Image Processing Utilities
 Handles all image manipulation tasks that are independent of model inference:
   - Preprocessing (resize, normalize, tensorize)
   - Postprocessing (sigmoid, threshold, upsample)
+  - Mask refinement (LCC selection, boundary smoothing, convex hull)
   - Heatmap generation (probability map → colored overlay)
   - ROI extraction (contour detection → bounding box crop)
+  - Segmentation coverage metrics
   - Base64 encoding for API transmission
 
-Keeping these functions here — away from the model classes — makes each
-pipeline stage independently testable and replaceable.
+WHY MASK REFINEMENT IS A SEPARATE STAGE:
+  The UNet++ output is a raw probability map.  Morphological post-processing
+  (close + fill + open) is necessary but not sufficient:
+    a) Multiple disconnected blobs may survive — only the LARGEST connected
+       component represents the primary lesion.
+    b) Blob boundaries carry encoder noise.  Gaussian smoothing on the binary
+       edge reduces jaggedness and improves ROI quality.
+  These operations are clinically motivated: a clean, single-lesion mask
+  prevents the classifier from being distracted by hair artifacts or
+  second accidental lesions in the frame.
 """
 from __future__ import annotations
 
@@ -319,3 +329,147 @@ def mask_to_base64(binary_mask: np.ndarray) -> str:
     pil_img.save(buffer, format="PNG")
     b64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
     return f"data:image/png;base64,{b64}"
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MASK REFINEMENT
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def refine_mask(binary_mask: np.ndarray) -> Tuple[np.ndarray, dict]:
+    """
+    Apply post-UNet++ mask refinement in three steps:
+      1. Largest Connected Component (LCC) selection
+      2. Convex hull fill for ring-shaped lesions
+      3. Boundary smoothing
+
+    WHY LCC:
+      A dermoscopy field-of-view may contain the primary lesion plus stray
+      artefacts (hair, ink markings, secondary lesions).  After morphological
+      cleanup, there may still be multiple blobs.  Selecting only the LARGEST
+      ensures we crop and classify the dominant lesion, not noise.
+
+    WHY CONVEX HULL FILL:
+      Ring-shaped lesions (tinea corporis, annular BCC, discoid LE) have a
+      hollow centre that the network correctly ignores.  Without hull-filling,
+      the mask crop is a crescent that excludes the lesion centre — giving the
+      classifier a misleading partial view.
+
+    WHY BOUNDARY SMOOTHING:
+      Encoder artifacts produce a jagged boundary.  Smoothing with a small
+      Gaussian kernel before binarising removes staircasing without affecting
+      the lesion extent perceptibly.
+
+    Returns:
+        refined_mask : uint8 (H, W) {0, 255}
+        metrics      : dict with lcc_area, total_mask_area, coverage_pct
+    """
+    H, W = binary_mask.shape
+    total_pixels = H * W
+
+    # Step 1 — Largest Connected Component
+    num_labels, labels, stats, _ = cv2.connectedComponentsWithStats(
+        binary_mask, connectivity=8
+    )
+    if num_labels <= 1:
+        # No foreground pixels at all
+        return binary_mask, {"lcc_area": 0, "total_mask_area": 0, "coverage_pct": 0.0}
+
+    # Label 0 is background; find largest foreground label
+    fg_stats = stats[1:]   # exclude background row
+    largest_label = int(np.argmax(fg_stats[:, cv2.CC_STAT_AREA])) + 1
+    lcc_mask = (labels == largest_label).astype(np.uint8) * 255
+
+    lcc_area = int(fg_stats[largest_label - 1, cv2.CC_STAT_AREA])
+
+    # Step 2 — Convex hull fill for ring lesions
+    contours, _ = cv2.findContours(lcc_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    hull_mask = lcc_mask.copy()
+    if contours:
+        hull = cv2.convexHull(contours[0])
+        cv2.drawContours(hull_mask, [hull], -1, 255, thickness=cv2.FILLED)
+
+    # Step 3 — Boundary smoothing (Gaussian blur → re-threshold)
+    smoothed = cv2.GaussianBlur(hull_mask.astype(np.float32), (7, 7), sigmaX=2.0)
+    refined  = (smoothed >= 127).astype(np.uint8) * 255
+
+    refined_area = int((refined > 127).sum())
+    coverage_pct = round((refined_area / total_pixels) * 100, 2)
+
+    metrics = {
+        "lcc_area":         lcc_area,
+        "total_mask_area":  refined_area,
+        "coverage_pct":     coverage_pct,
+        "num_components":   num_labels - 1,
+    }
+    return refined, metrics
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SEGMENTATION COVERAGE METRICS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def compute_roi_coverage(roi_image: np.ndarray, binary_mask: np.ndarray) -> float:
+    """
+    Compute the fraction of the ROI bounding-box that is actually segmented lesion.
+
+    WHY THIS METRIC:
+      A tight crop (high coverage) means the classifier sees mostly lesion tissue.
+      A loose crop (low coverage) means it sees a lot of surrounding healthy skin,
+      which may degrade accuracy.  This metric is surfaced in the explainability
+      card so clinicians can judge result reliability.
+    """
+    x, y, w, h = cv2.boundingRect(
+        cv2.findContours(binary_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0][0]
+        if cv2.findContours(binary_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0]
+        else np.array([[[0, 0]]])
+    )
+    roi_area  = max(1, w * h)
+    mask_roi  = binary_mask[y:y+h, x:x+w]
+    lesion_px = int((mask_roi > 127).sum())
+    return round((lesion_px / roi_area) * 100, 1)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CONFIDENCE CALIBRATION
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def apply_temperature_scaling(
+    logits_or_probs: "np.ndarray",
+    temperature: float = 1.5,
+    is_logits: bool = False,
+) -> "np.ndarray":
+    """
+    Temperature scaling is the simplest post-hoc calibration method.
+
+    WHY CALIBRATION MATTERS:
+      Neural network classifiers are typically overconfident: a model may
+      output 95% on all in-distribution examples regardless of true uncertainty.
+      Temperature scaling divides logits by T before softmax, spreading the
+      probability mass and bringing confidences closer to empirical accuracy.
+
+      T > 1  →  softer (less confident, better calibrated for OOD)
+      T = 1  →  no change
+      T < 1  →  sharper (more confident — only use if model is underconfident)
+
+    For a typical EfficientNet trained on dermoscopy: T ≈ 1.3–2.0.
+
+    Args:
+        logits_or_probs : (num_classes,) array — raw logits or pre-softmax probs
+        temperature     : calibration temperature (config: TEMPERATURE_SCALING)
+        is_logits       : True if input is raw logits (before softmax)
+
+    Returns:
+        calibrated_probs : (num_classes,) float32, sums to 1.0
+    """
+    import numpy as np
+
+    if is_logits:
+        # Standard temperature scaling on logits
+        scaled = logits_or_probs / temperature
+        exp    = np.exp(scaled - scaled.max())   # numerically stable
+        return (exp / exp.sum()).astype(np.float32)
+    else:
+        # Apply on log-probabilities then re-normalise
+        log_p  = np.log(np.clip(logits_or_probs, 1e-9, 1.0)) / temperature
+        exp    = np.exp(log_p - log_p.max())
+        return (exp / exp.sum()).astype(np.float32)

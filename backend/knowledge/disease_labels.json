@@ -9,12 +9,17 @@
     "description": "Melanoma là loại ung thư da nguy hiểm nhất, xuất phát từ tế bào hắc tố (melanocyte). Bệnh có khả năng di căn cao và tỷ lệ tử vong đáng kể nếu không được phát hiện sớm. Dưới kính hiển vi da liễu (dermoscopy), melanoma thường có mạng lưới sắc tố không điển hình, vùng hồi quy trắng, cấu trúc mạch máu bất thường và tâm điểm không đối xứng.",
     "recommendation": "Cần đến gặp bác sĩ da liễu hoặc ung thư chuyên khoa ngay lập tức. Sinh thiết da để xác nhận chẩn đoán là bắt buộc. Phẫu thuật cắt rộng rãi là điều trị ưu tiên. Xét nghiệm hạch bạch huyết nếu nghi ngờ di căn. Liệu pháp miễn dịch (PD-1 inhibitor) hoặc BRAF inhibitor cho giai đoạn tiến triển.",
     "follow_up": "Theo dõi mỗi 3 tháng trong 2 năm đầu, mỗi 6 tháng trong 3 năm tiếp theo, sau đó hàng năm.",
-    "icd10": "C43",
-    "tags": [
-      "ung_thu",
-      "hac_to",
-      "nguy_hiem"
+    "specialist_referral": "Bác sĩ Da liễu chuyên khoa ung thư da + Bác sĩ Ung thư nội khoa",
+    "red_flags": [
+      "Tổn thương phát triển nhanh trong vài tuần",
+      "Chảy máu tự phát không do chấn thương",
+      "Loét trên bề mặt tổn thương",
+      "Sưng hạch bạch huyết gần vùng tổn thương",
+      "Thay đổi màu sắc đột ngột (đặc biệt xuất hiện vùng đen hoặc trắng)",
+      "Ngứa hoặc đau dai dẳng tại tổn thương"
     ],
+    "icd10": "C43",
+    "tags": ["ung_thu", "hac_to", "nguy_hiem"],
     "prevalence_vn": "Hiếm gặp tại VN nhưng đang tăng, chiếm ~1-2% ung thư da",
     "climate_factor": false
   },
@@ -28,11 +33,15 @@
     "description": "Nốt ruồi hắc tố (Melanocytic Nevi) là tổn thương da lành tính phổ biến nhất, được tạo thành từ các tế bào hắc tố tập hợp lại. Dưới dermoscopy, nốt ruồi lành tính thường có mạng lưới sắc tố đều đặn, bờ rõ ràng, màu sắc đồng nhất và đối xứng. Cần phân biệt với melanoma bằng tiêu chí ABCD.",
     "recommendation": "Theo dõi định kỳ hàng năm. Nếu nốt ruồi thay đổi hình dạng, màu sắc hoặc kích thước, cần tái khám ngay. Tránh tiếp xúc tia UV. Có thể xem xét cắt bỏ nếu gây khó chịu thẩm mỹ hoặc ở vị trí dễ tổn thương.",
     "follow_up": "Kiểm tra da toàn thân hàng năm. Chụp ảnh theo dõi nếu có nốt ruồi bất thường.",
-    "icd10": "D22",
-    "tags": [
-      "lanh_tinh",
-      "hac_to"
+    "specialist_referral": "Bác sĩ Da liễu (nếu có thay đổi)",
+    "red_flags": [
+      "Nốt ruồi thay đổi kích thước, hình dạng hoặc màu sắc trong thời gian ngắn",
+      "Nốt ruồi có bờ không đều hoặc nhiều màu",
+      "Chảy máu, ngứa hoặc đóng vảy",
+      "Kích thước > 6mm (quy tắc ABCD)"
     ],
+    "icd10": "D22",
+    "tags": ["lanh_tinh", "hac_to"],
     "prevalence_vn": "Rất phổ biến",
     "climate_factor": false
   },
@@ -46,11 +55,15 @@
     "description": "Ung thư tế bào đáy (BCC) là loại ung thư da phổ biến nhất, xuất phát từ lớp tế bào đáy của biểu bì. Dưới dermoscopy thấy nốt màu xanh xám (blue-gray ovoid nests), mạch máu arborizating, vùng trắng sáng và cấu trúc lá (leaf-like). BCC hiếm khi di căn nhưng có thể xâm lấn mô xung quanh gây tổn thương nghiêm trọng.",
     "recommendation": "Phẫu thuật cắt bỏ hoặc điều trị Mohs. Xạ trị hoặc kem imiquimod cho các tổn thương không thể phẫu thuật. Vismodegib cho BCC tiến triển. Tránh ánh nắng mặt trời và dùng kem chống nắng SPF 50+.",
     "follow_up": "Theo dõi 6 tháng/lần trong 2 năm đầu sau điều trị.",
-    "icd10": "C44.1",
-    "tags": [
-      "ung_thu",
-      "te_bao_day"
+    "specialist_referral": "Bác sĩ Da liễu chuyên khoa ung thư da hoặc Bác sĩ Phẫu thuật Da",
+    "red_flags": [
+      "Tổn thương không lành sau 4 tuần",
+      "Loét hoặc đóng vảy tái phát",
+      "Xâm lấn vào mô xung quanh (gờ cứng)",
+      "Xuất hiện ở vùng mặt, mũi, tai (nguy cơ xâm lấn cao)"
     ],
+    "icd10": "C44.1",
+    "tags": ["ung_thu", "te_bao_day"],
     "prevalence_vn": "Phổ biến, đặc biệt ở người tiếp xúc nắng nhiều",
     "climate_factor": true
   },
@@ -64,11 +77,15 @@
     "description": "Dày sừng quang hóa (AK) là tổn thương tiền ung thư do tiếp xúc quá mức với tia UV. Khoảng 5-10% AK có thể tiến triển thành SCC. Dưới dermoscopy thấy mạch máu dạng cuộn (coiled vessels), vảy bề mặt và nền hồng đỏ.",
     "recommendation": "Điều trị bằng PDT, thuốc bôi (5-FU, imiquimod, diclofenac) hoặc áp lạnh nitrogen lỏng. Cần điều trị toàn bộ vùng da bị tổn thương (field treatment).",
     "follow_up": "Theo dõi mỗi 6 tháng. Bảo vệ da khỏi tia UV nghiêm ngặt.",
-    "icd10": "L57.0",
-    "tags": [
-      "tien_ung_thu",
-      "quang_hoa"
+    "specialist_referral": "Bác sĩ Da liễu",
+    "red_flags": [
+      "Tổn thương dày hơn, cứng hoặc phát triển nhanh",
+      "Loét hoặc chảy máu tự phát",
+      "Nhiều tổn thương xuất hiện đồng thời",
+      "Tổn thương trên vùng da tiếp xúc nắng mãn tính"
     ],
+    "icd10": "L57.0",
+    "tags": ["tien_ung_thu", "quang_hoa"],
     "prevalence_vn": "Tăng ở nông dân, ngư dân tiếp xúc nắng lâu năm",
     "climate_factor": true
   },
@@ -82,11 +99,14 @@
     "description": "Dày sừng lành tính bao gồm seborrheic keratosis, solar lentigo và keratosis lichenoid. Rất phổ biến ở người trung niên và cao tuổi. Dưới dermoscopy thấy cấu trúc não (cerebriform pattern), vùng sáng và milia-like cysts.",
     "recommendation": "Không cần điều trị nếu không gây khó chịu. Có thể loại bỏ bằng đốt điện, laser hoặc áp lạnh vì lý do thẩm mỹ.",
     "follow_up": "Theo dõi định kỳ hàng năm.",
-    "icd10": "L82",
-    "tags": [
-      "lanh_tinh",
-      "day_sung"
+    "specialist_referral": "Bác sĩ Da liễu (nếu không chắc chắn về chẩn đoán)",
+    "red_flags": [
+      "Thay đổi đột ngột về kích thước hoặc màu sắc",
+      "Tổn thương mới xuất hiện nhiều (dấu hiệu Leser-Trélat — liên quan ung thư nội tạng)",
+      "Ngứa hoặc chảy máu"
     ],
+    "icd10": "L82",
+    "tags": ["lanh_tinh", "day_sung"],
     "prevalence_vn": "Rất phổ biến ở người cao tuổi Việt Nam",
     "climate_factor": false
   },
@@ -100,11 +120,14 @@
     "description": "U xơ bì là khối u lành tính của mô liên kết da. Dấu hiệu đặc trưng là dimple sign khi ép vào da. Dưới dermoscopy thấy mạng sắc tố trung tâm nhạt màu (peripheral network with central scar-like hypopigmentation). Phổ biến ở chi dưới của phụ nữ.",
     "recommendation": "Không cần điều trị. Có thể phẫu thuật cắt bỏ nếu gây đau hoặc vì lý do thẩm mỹ.",
     "follow_up": "Theo dõi hàng năm.",
-    "icd10": "D23",
-    "tags": [
-      "lanh_tinh",
-      "mo_lien_ket"
+    "specialist_referral": "Bác sĩ Da liễu (nếu có thay đổi hoặc nghi ngờ)",
+    "red_flags": [
+      "Tổn thương phát triển nhanh",
+      "Đau hoặc chảy máu tự phát",
+      "Kích thước > 2cm"
     ],
+    "icd10": "D23",
+    "tags": ["lanh_tinh", "mo_lien_ket"],
     "prevalence_vn": "Phổ biến",
     "climate_factor": false
   },
@@ -118,11 +141,14 @@
     "description": "Tổn thương mạch máu da bao gồm u máu, nốt anh đào, u máu tế bào phình (pyogenic granuloma) và giãn mao mạch. Dưới dermoscopy thấy lacunae màu đỏ đến tím xanh cho u máu, hoặc mạch máu dạng dây trong pyogenic granuloma.",
     "recommendation": "Thường không cần điều trị. Nếu chảy máu hoặc gây khó chịu: laser, đốt điện hoặc phẫu thuật.",
     "follow_up": "Theo dõi hàng năm.",
-    "icd10": "D18",
-    "tags": [
-      "lanh_tinh",
-      "mach_mau"
+    "specialist_referral": "Bác sĩ Da liễu hoặc Bác sĩ Phẫu thuật Mạch máu (nếu lớn)",
+    "red_flags": [
+      "Chảy máu không kiểm soát được",
+      "Phát triển nhanh chóng",
+      "Đau hoặc loét"
     ],
+    "icd10": "D18",
+    "tags": ["lanh_tinh", "mach_mau"],
     "prevalence_vn": "Phổ biến",
     "climate_factor": false
   },
@@ -136,11 +162,15 @@
     "description": "Ung thư tế bào vảy (SCC) là loại ung thư da phổ biến thứ hai, có nguy cơ di căn cao hơn BCC. Dưới dermoscopy thấy mạch máu dạng cuộn tóc (hairpin/coiled vessels) trên nền trắng vàng, vảy sừng bề mặt. SCC xuất phát từ vùng da tiếp xúc UV, miệng, cơ quan sinh dục.",
     "recommendation": "Phẫu thuật cắt bỏ rộng rãi. Phẫu thuật Mohs cho vị trí nguy cơ cao. Xét nghiệm hạch bạch huyết nếu tổn thương lớn. Pembrolizumab cho SCC tiến triển.",
     "follow_up": "Theo dõi mỗi 3 tháng trong năm đầu, sau đó mỗi 6 tháng.",
-    "icd10": "C44.2",
-    "tags": [
-      "ung_thu",
-      "te_bao_vay"
+    "specialist_referral": "Bác sĩ Da liễu ung thư da + Bác sĩ Ung thư nội khoa",
+    "red_flags": [
+      "Tổn thương cứng, nổi cao, dễ chảy máu",
+      "Loét không lành",
+      "Phát triển nhanh trong vài tuần",
+      "Sưng hạch lân cận"
     ],
+    "icd10": "C44.2",
+    "tags": ["ung_thu", "te_bao_vay"],
     "prevalence_vn": "Phổ biến, đặc biệt nông dân/ngư dân Việt Nam",
     "climate_factor": true
   },
@@ -154,11 +184,15 @@
     "description": "Ung thư tế bào Merkel là ung thư da hiếm gặp nhưng rất hung hãn, xuất phát từ tế bào thần kinh nội tiết da. Tỷ lệ tái phát và di căn cao. Thường xuất hiện như khối u đỏ hoặc tím bóng, phát triển nhanh trên vùng da tiếp xúc nắng ở người cao tuổi.",
     "recommendation": "Phẫu thuật cắt bỏ rộng rãi kết hợp xạ trị. Liệu pháp miễn dịch (pembrolizumab, avelumab) cho giai đoạn tiến triển. Hội chẩn đa chuyên khoa.",
     "follow_up": "Theo dõi chặt chẽ mỗi 3 tháng trong 3 năm đầu. CT scan định kỳ.",
-    "icd10": "C44.8",
-    "tags": [
-      "ung_thu",
-      "hiem_gap"
+    "specialist_referral": "Bác sĩ Ung thư nội khoa + Bác sĩ Da liễu ung thư da + Xạ trị",
+    "red_flags": [
+      "Khối u phát triển rất nhanh (vài tuần)",
+      "Tổn thương đỏ tím bóng, chắc, không đau",
+      "Sưng hạch vùng lân cận",
+      "Ở người > 60 tuổi bị suy giảm miễn dịch"
     ],
+    "icd10": "C44.8",
+    "tags": ["ung_thu", "hiem_gap"],
     "prevalence_vn": "Rất hiếm tại Việt Nam",
     "climate_factor": false
   },
@@ -172,11 +206,14 @@
     "description": "Lentigo Maligna là giai đoạn sớm của melanoma in situ trên da bị tổn thương do ánh nắng mãn tính. Thường xuất hiện ở người cao tuổi trên vùng mặt, cổ. Dưới dermoscopy thấy asymmetric follicular openings, rhomboidal structures.",
     "recommendation": "Phẫu thuật cắt bỏ với bờ rộng (1cm). Kỹ thuật CCPDMA hoặc Mohs cho vùng mặt. Kem imiquimod 5% khi không thể phẫu thuật.",
     "follow_up": "Theo dõi mỗi 6 tháng sau điều trị trong 5 năm.",
-    "icd10": "D03",
-    "tags": [
-      "tien_ung_thu",
-      "hac_to"
+    "specialist_referral": "Bác sĩ Da liễu ung thư da",
+    "red_flags": [
+      "Mảng nâu đen lan rộng dần trên mặt",
+      "Thay đổi màu sắc không đồng đều",
+      "Xuất hiện nốt nâng cao bên trong mảng (biến thành melanoma xâm lấn)"
     ],
+    "icd10": "D03",
+    "tags": ["tien_ung_thu", "hac_to"],
     "prevalence_vn": "Gặp ở người lớn tuổi tiếp xúc nắng nhiều",
     "climate_factor": true
   },
@@ -190,11 +227,14 @@
     "description": "Dày sừng tiết bã là tổn thương lành tính cực kỳ phổ biến. Bề mặt sần sùi, có vẻ 'dán' vào da. Dưới dermoscopy thấy milia-like cysts, comedo-like openings và vân sóng. Dấu hiệu Leser-Trélat gợi ý bệnh nội tạng ác tính.",
     "recommendation": "Không cần điều trị. Nếu muốn: áp lạnh, đốt điện hoặc cạo bỏ. Sinh thiết nếu tổn thương thay đổi đột ngột.",
     "follow_up": "Theo dõi định kỳ hàng năm.",
-    "icd10": "L82",
-    "tags": [
-      "lanh_tinh",
-      "day_sung"
+    "specialist_referral": "Bác sĩ Da liễu (nếu không chắc chắn)",
+    "red_flags": [
+      "Nhiều tổn thương mới xuất hiện đột ngột (dấu hiệu Leser-Trélat)",
+      "Tổn thương thay đổi màu sắc hoặc chảy máu",
+      "Bờ không đều, không đối xứng"
     ],
+    "icd10": "L82",
+    "tags": ["lanh_tinh", "day_sung"],
     "prevalence_vn": "Rất phổ biến ở người Việt trung niên trở lên",
     "climate_factor": false
   },
@@ -208,11 +248,14 @@
     "description": "U hạt nhiễm mủ là tổn thương mạch máu lành tính, thường sau chấn thương nhỏ hoặc thai kỳ. Phát triển nhanh, đỏ tươi, mềm, dễ chảy máu. Dưới dermoscopy thấy mạch máu dạng dây trên nền trắng.",
     "recommendation": "Phẫu thuật cắt bỏ hoặc nạo và đốt điện để tránh tái phát. Laser là lựa chọn tốt.",
     "follow_up": "Theo dõi 1-2 tháng sau điều trị.",
-    "icd10": "L98.0",
-    "tags": [
-      "lanh_tinh",
-      "mach_mau"
+    "specialist_referral": "Bác sĩ Da liễu hoặc Bác sĩ Phẫu thuật Da",
+    "red_flags": [
+      "Chảy máu nhiều tự phát",
+      "Tái phát sau điều trị",
+      "Phát triển rất nhanh — phân biệt với amelanotic melanoma"
     ],
+    "icd10": "L98.0",
+    "tags": ["lanh_tinh", "mach_mau"],
     "prevalence_vn": "Khá phổ biến",
     "climate_factor": false
   },
@@ -226,12 +269,14 @@
     "description": "U máu ấu trĩ là khối u mạch máu lành tính phổ biến nhất ở trẻ sơ sinh. Phát triển nhanh năm đầu, tự thoái lui 5-7 năm. Màu đỏ tươi, bề mặt như dâu tây.",
     "recommendation": "Nhiều trường hợp tự thoái lui. Propranolol uống cho nguy cơ cao. Laser hoặc phẫu thuật nếu ảnh hưởng chức năng.",
     "follow_up": "Mỗi 3 tháng năm đầu, sau đó hàng năm.",
-    "icd10": "D18.0",
-    "tags": [
-      "lanh_tinh",
-      "mach_mau",
-      "tre_em"
+    "specialist_referral": "Bác sĩ Nhi Da liễu hoặc Bác sĩ Da liễu",
+    "red_flags": [
+      "U máu gần mắt, mũi, miệng hoặc cột sống",
+      "Loét trên bề mặt u máu",
+      "Nhiều u máu (> 5) — cần siêu âm gan"
     ],
+    "icd10": "D18.0",
+    "tags": ["lanh_tinh", "mach_mau", "tre_em"],
     "prevalence_vn": "Phổ biến ở trẻ sơ sinh Việt Nam",
     "climate_factor": false
   },
@@ -245,11 +290,13 @@
     "description": "U huyết quản da rất phổ biến sau 30 tuổi. Kích thước 1-5mm, màu đỏ anh đào. Dưới dermoscopy thấy lacunae đỏ đến tím đặc trưng.",
     "recommendation": "Không cần điều trị. Laser, đốt điện hoặc áp lạnh vì thẩm mỹ.",
     "follow_up": "Không cần theo dõi đặc biệt.",
-    "icd10": "D18.0",
-    "tags": [
-      "lanh_tinh",
-      "mach_mau"
+    "specialist_referral": "Bác sĩ Da liễu (chỉ khi chẩn đoán không chắc chắn)",
+    "red_flags": [
+      "Tổn thương phát triển nhanh hoặc chảy máu nhiều",
+      "Màu sắc thay đổi — không điển hình cho u huyết quản"
     ],
+    "icd10": "D18.0",
+    "tags": ["lanh_tinh", "mach_mau"],
     "prevalence_vn": "Rất phổ biến",
     "climate_factor": false
   },
@@ -263,11 +310,14 @@
     "description": "Địa y da là bệnh viêm da mãn tính do rối loạn miễn dịch tự thân. Đặc trưng 4P: Pruritic, Purple, Polygonal, Papules. Dưới dermoscopy thấy Wickham's striae đặc trưng.",
     "recommendation": "Corticosteroid tại chỗ hoặc toàn thân. Retinoid, cyclosporine hoặc PUVA cho kháng trị.",
     "follow_up": "Theo dõi mỗi 6 tháng. Kiểm tra niêm mạc (~1% ác tính hóa).",
-    "icd10": "L43",
-    "tags": [
-      "viem_da",
-      "mien_dich"
+    "specialist_referral": "Bác sĩ Da liễu",
+    "red_flags": [
+      "Tổn thương niêm mạc miệng không lành",
+      "Loét niêm mạc kéo dài (nguy cơ SCC)",
+      "Tổn thương da lan rộng kèm ngứa dữ dội"
     ],
+    "icd10": "L43",
+    "tags": ["viem_da", "mien_dich"],
     "prevalence_vn": "Phổ biến, liên quan stress",
     "climate_factor": false
   },
@@ -281,12 +331,15 @@
     "description": "Vảy nến là bệnh da mãn tính do rối loạn miễn dịch. Đặc trưng bởi mảng đỏ phủ vảy trắng bạc, bờ rõ. Ảnh hưởng 2-3% dân số thế giới.",
     "recommendation": "Tại chỗ: corticosteroid, vitamin D3, retinoid, coal tar. Liệu pháp ánh sáng UVB, PUVA. Toàn thân: methotrexate, cyclosporine. Sinh học: TNF-inhibitor, IL-17, IL-23.",
     "follow_up": "Theo dõi thường xuyên. Kiểm tra viêm khớp vảy nến.",
-    "icd10": "L40",
-    "tags": [
-      "viem_da",
-      "mien_dich",
-      "man_tinh"
+    "specialist_referral": "Bác sĩ Da liễu chuyên khoa miễn dịch da",
+    "red_flags": [
+      "Vảy nến đỏ da toàn thân (erythroderma) — cấp cứu",
+      "Vảy nến mủ toàn thân",
+      "Sốt kèm tổn thương da lan rộng",
+      "Đau khớp kèm vảy nến (viêm khớp vảy nến)"
     ],
+    "icd10": "L40",
+    "tags": ["viem_da", "mien_dich", "man_tinh"],
     "prevalence_vn": "Phổ biến, khoảng 1-2% dân số VN",
     "climate_factor": false
   },
@@ -300,12 +353,14 @@
     "description": "Chàm da đặc trưng bởi da khô, ngứa, ban đỏ tái phát. Liên quan đến đột biến gen Filaggrin. Rất phổ biến ở trẻ em Việt Nam, liên quan khí hậu nóng ẩm.",
     "recommendation": "Dưỡng ẩm thường xuyên. Corticosteroid tại chỗ. Tacrolimus/pimecrolimus. Dupilumab cho thể nặng.",
     "follow_up": "Mỗi 3-6 tháng.",
-    "icd10": "L20",
-    "tags": [
-      "viem_da",
-      "di_ung",
-      "man_tinh"
+    "specialist_referral": "Bác sĩ Da liễu hoặc Bác sĩ Dị ứng - Miễn dịch",
+    "red_flags": [
+      "Nhiễm trùng thứ phát (mủ, vảy vàng)",
+      "Chàm da lan rộng kèm sốt",
+      "Eczema herpeticum (nhiễm Herpes trên nền chàm — cấp cứu)"
     ],
+    "icd10": "L20",
+    "tags": ["viem_da", "di_ung", "man_tinh"],
     "prevalence_vn": "Rất phổ biến ở Việt Nam, tăng do ô nhiễm",
     "climate_factor": true
   },
@@ -319,11 +374,14 @@
     "description": "Nấm da do dermatophyte, ảnh hưởng da, tóc và móng. Thể hắc lào (tinea corporis) tạo vòng tròn đỏ, ngứa, bờ rõ. Rất phổ biến trong khí hậu nóng ẩm Việt Nam.",
     "recommendation": "Kháng nấm tại chỗ (clotrimazole, terbinafine) 2-4 tuần. Diện rộng hoặc tóc/móng: uống kháng nấm.",
     "follow_up": "Kiểm tra sau 4 tuần.",
-    "icd10": "B35",
-    "tags": [
-      "nhiem_nam",
-      "truyen_nhiem"
+    "specialist_referral": "Bác sĩ Da liễu (nếu không đáp ứng điều trị)",
+    "red_flags": [
+      "Không đáp ứng kháng nấm sau 4-6 tuần",
+      "Nhiễm nấm tái phát nhiều lần (kiểm tra đái tháo đường, suy giảm miễn dịch)",
+      "Kerion (nhiễm nấm sâu gây áp-xe trên da đầu)"
     ],
+    "icd10": "B35",
+    "tags": ["nhiem_nam", "truyen_nhiem"],
     "prevalence_vn": "Rất phổ biến, đặc biệt mùa hè, vùng nhiệt đới",
     "climate_factor": true
   },
@@ -337,12 +395,14 @@
     "description": "Mụn cóc do HPV. Dưới dermoscopy thấy papillary/mosaic pattern với chấm đỏ trung tâm (thrombosed capillaries). Cần phân biệt với amelanotic melanoma vùng acral.",
     "recommendation": "Acid salicylic là lựa chọn đầu. Áp lạnh, đốt điện laser, cantharidin hoặc bleomycin tiêm nội tổn thương.",
     "follow_up": "Theo dõi đến khi khỏi hoàn toàn.",
-    "icd10": "B07",
-    "tags": [
-      "virus",
-      "hpv",
-      "truyen_nhiem"
+    "specialist_referral": "Bác sĩ Da liễu (đặc biệt mụn cóc vùng sinh dục)",
+    "red_flags": [
+      "Mụn cóc vùng sinh dục — cần xét nghiệm HPV type",
+      "Mụn cóc ở người suy giảm miễn dịch (lan rộng, khó trị)",
+      "Tổn thương dạng mụn cóc nhưng phát triển nhanh bất thường"
     ],
+    "icd10": "B07",
+    "tags": ["virus", "hpv", "truyen_nhiem"],
     "prevalence_vn": "Rất phổ biến ở học sinh, trẻ em Việt Nam",
     "climate_factor": false
   },
@@ -356,10 +416,14 @@
     "description": "Sẹo lồi và sẹo phì đại do tổng hợp collagen quá mức. Thường gặp ở người da đen và da nâu, vùng ngực, vai, vành tai.",
     "recommendation": "Tiêm triamcinolone là chuẩn. Silicone gel/sheet. Laser CO2 hoặc Nd:YAG. Xạ trị sau phẫu thuật.",
     "follow_up": "Mỗi 4-6 tuần giai đoạn điều trị tích cực.",
-    "icd10": "L91.0",
-    "tags": [
-      "seo_da"
+    "specialist_referral": "Bác sĩ Da liễu hoặc Bác sĩ Phẫu thuật Thẩm mỹ",
+    "red_flags": [
+      "Sẹo tiếp tục phát triển dù đã điều trị",
+      "Đau hoặc ngứa nhiều hạn chế vận động",
+      "Sẹo lồi khổng lồ gây co rút"
     ],
+    "icd10": "L91.0",
+    "tags": ["seo_da"],
     "prevalence_vn": "Phổ biến ở người Việt (da vàng có nguy cơ cao)",
     "climate_factor": false
   },
@@ -373,11 +437,14 @@
     "description": "Nốt ruồi không điển hình: >6mm, bờ không đều, màu không đồng nhất. Là yếu tố nguy cơ cho melanoma.",
     "recommendation": "Chụp ảnh toàn thân để theo dõi. Sinh thiết nếu có thay đổi. SPF 50+.",
     "follow_up": "Mỗi 6 tháng.",
-    "icd10": "D22",
-    "tags": [
-      "hac_to",
-      "nguy_co"
+    "specialist_referral": "Bác sĩ Da liễu chuyên khoa dermoscopy",
+    "red_flags": [
+      "Thay đổi hình dạng, màu sắc hoặc kích thước trong 6 tháng",
+      "Kích thước > 10mm",
+      "Nhiều nốt ruồi không điển hình (hội chứng dysplastic nevus — nguy cơ melanoma cao)"
     ],
+    "icd10": "D22",
+    "tags": ["hac_to", "nguy_co"],
     "prevalence_vn": "Phổ biến",
     "climate_factor": false
   },
@@ -391,11 +458,14 @@
     "description": "Bệnh đỏ mặt là viêm da mãn tính ở mặt, đặc trưng đỏ bừng tái phát, giãn mao mạch, sẩn mụn.",
     "recommendation": "Metronidazole, azelaic acid, ivermectin tại chỗ. Doxycycline liều thấp. Laser/IPL cho giãn mao mạch.",
     "follow_up": "Điều trị duy trì lâu dài.",
-    "icd10": "L71",
-    "tags": [
-      "viem_da",
-      "mat"
+    "specialist_referral": "Bác sĩ Da liễu",
+    "red_flags": [
+      "Rosacea mắt (ocular rosacea) — ảnh hưởng thị lực",
+      "Rhinophyma tiến triển (dày da mũi)",
+      "Không đáp ứng điều trị chuẩn"
     ],
+    "icd10": "L71",
+    "tags": ["viem_da", "mat"],
     "prevalence_vn": "Ít phổ biến hơn ở người Việt so với da trắng",
     "climate_factor": false
   },
@@ -409,12 +479,14 @@
     "description": "U mềm lây do Molluscum contagiosum virus. Sẩn tròn, bóng với lõm trung tâm. Rất dễ lây trong điều kiện bể bơi, nhà trẻ Việt Nam.",
     "recommendation": "Tự khỏi 6-18 tháng. Can thiệp: áp lạnh, đốt điện, podophyllotoxin, cantharidin.",
     "follow_up": "Theo dõi đến khi hết tổn thương.",
-    "icd10": "B08.1",
-    "tags": [
-      "virus",
-      "truyen_nhiem",
-      "tre_em"
+    "specialist_referral": "Bác sĩ Da liễu hoặc Bác sĩ Nhi khoa",
+    "red_flags": [
+      "Molluscum ở người lớn vùng sinh dục (lây qua đường tình dục)",
+      "Lan rộng ở người suy giảm miễn dịch (HIV)",
+      "Tổn thương mặt lớn ảnh hưởng thẩm mỹ"
     ],
+    "icd10": "B08.1",
+    "tags": ["virus", "truyen_nhiem", "tre_em"],
     "prevalence_vn": "Rất phổ biến ở trẻ em, đặc biệt bể bơi công cộng",
     "climate_factor": false
   },
@@ -428,11 +500,14 @@
     "description": "Zona do Varicella-Zoster tái hoạt. Ban mụn nước đau theo đường dây thần kinh. Biến chứng đau sau zona kéo dài nhiều năm.",
     "recommendation": "Kháng virus (acyclovir, valacyclovir) trong 72h đầu. Gabapentin, pregabalin cho đau sau zona. Vaccine Shingrix phòng ngừa.",
     "follow_up": "Đến khi lành. Đánh giá đau sau zona.",
-    "icd10": "B02",
-    "tags": [
-      "virus",
-      "than_kinh"
+    "specialist_referral": "Bác sĩ Da liễu + Bác sĩ Thần kinh (nếu đau sau zona)",
+    "red_flags": [
+      "Zona mắt (herpes zoster ophthalmicus) — nguy hiểm cho thị lực",
+      "Zona tai (Ramsay Hunt syndrome) — nguy cơ liệt mặt",
+      "Zona ở người trẻ < 50 tuổi (nguy cơ suy giảm miễn dịch)"
     ],
+    "icd10": "B02",
+    "tags": ["virus", "than_kinh"],
     "prevalence_vn": "Phổ biến ở người cao tuổi, người suy giảm miễn dịch",
     "climate_factor": false
   },
@@ -446,11 +521,14 @@
     "description": "Nốt ruồi Spitz thường gặp ở trẻ em và thanh thiếu niên, ngoại hình rất giống melanoma. Dưới dermoscopy thấy cấu trúc starburst đặc trưng.",
     "recommendation": "Sinh thiết cắt bỏ hoàn toàn bắt buộc. Cần giải phẫu bệnh từ chuyên gia.",
     "follow_up": "Mỗi 6 tháng sau cắt bỏ.",
-    "icd10": "D22",
-    "tags": [
-      "hac_to",
-      "tre_em"
+    "specialist_referral": "Bác sĩ Da liễu + Bác sĩ Giải phẫu bệnh chuyên khoa da",
+    "red_flags": [
+      "Kích thước > 1cm ở người lớn",
+      "Không có cấu trúc starburst điển hình",
+      "Bất kỳ tổn thương Spitz-like ở người > 12 tuổi"
     ],
+    "icd10": "D22",
+    "tags": ["hac_to", "tre_em"],
     "prevalence_vn": "Hiếm gặp",
     "climate_factor": false
   },
@@ -464,11 +542,14 @@
     "description": "Nốt ruồi xanh lành tính, màu xanh do tế bào hắc tố nằm sâu trong bì. Hiệu ứng Tyndall tạo màu xanh đặc trưng.",
     "recommendation": "Theo dõi định kỳ. Sinh thiết nếu >1cm hoặc có thay đổi.",
     "follow_up": "Hàng năm với chụp ảnh.",
-    "icd10": "D22",
-    "tags": [
-      "hac_to",
-      "lanh_tinh"
+    "specialist_referral": "Bác sĩ Da liễu (nếu > 1cm hoặc thay đổi)",
+    "red_flags": [
+      "Kích thước > 1cm",
+      "Thay đổi nhanh hoặc loét",
+      "Nốt xanh ở vùng da đầu (cần phân biệt với blue nevus ác tính)"
     ],
+    "icd10": "D22",
+    "tags": ["hac_to", "lanh_tinh"],
     "prevalence_vn": "Tương đối phổ biến",
     "climate_factor": false
   },
@@ -482,11 +563,13 @@
     "description": "Nốt ruồi quầng sáng (Sutton's Nevus) bao quanh bởi vùng mất sắc tố. Do phản ứng miễn dịch chống tế bào hắc tố. Liên quan đến bạch biến.",
     "recommendation": "Không cần điều trị. Phân biệt với melanoma có regression. Khám toàn thân.",
     "follow_up": "6 tháng/lần đến khi nốt ruồi biến mất.",
-    "icd10": "D22",
-    "tags": [
-      "hac_to",
-      "lanh_tinh"
+    "specialist_referral": "Bác sĩ Da liễu",
+    "red_flags": [
+      "Nốt ruồi trung tâm không đều hoặc nhiều màu — phân biệt melanoma",
+      "Xuất hiện nhiều halo nevi đồng thời ở người lớn"
     ],
+    "icd10": "D22",
+    "tags": ["hac_to", "lanh_tinh"],
     "prevalence_vn": "Khá phổ biến ở người trẻ",
     "climate_factor": false
   },
@@ -500,11 +583,14 @@
     "description": "Nốt ruồi bẩm sinh có từ khi sinh. Phân loại: nhỏ (<1.5cm), vừa (1.5-20cm), lớn (>20cm). Nốt ruồi lớn nguy cơ melanoma 2-10%.",
     "recommendation": "Nhỏ và vừa: theo dõi. Lớn: phẫu thuật sớm hoặc theo dõi chặt chẽ.",
     "follow_up": "6 tháng/lần. MRI não nếu lớn ở đầu cổ.",
-    "icd10": "D22",
-    "tags": [
-      "hac_to",
-      "bam_sinh"
+    "specialist_referral": "Bác sĩ Da liễu + Bác sĩ Phẫu thuật Da (nếu lớn)",
+    "red_flags": [
+      "Thay đổi trong nốt ruồi bẩm sinh lớn",
+      "Nốt ruồi bẩm sinh lớn vùng cột sống (neurocutaneous melanosis)",
+      "Nốt vệ tinh xung quanh"
     ],
+    "icd10": "D22",
+    "tags": ["hac_to", "bam_sinh"],
     "prevalence_vn": "Phổ biến",
     "climate_factor": false
   },
@@ -518,12 +604,14 @@
     "description": "Melanoma không sắc tố là thể dễ bỏ sót nhất vì thiếu màu đặc trưng. Thường màu hồng đỏ. Dưới dermoscopy thấy mạch máu bất thường, milky red areas.",
     "recommendation": "Sinh thiết ngay cho tổn thương hồng đỏ phát triển không rõ nguyên nhân.",
     "follow_up": "Mỗi 3 tháng. Scanning toàn thân.",
-    "icd10": "C43",
-    "tags": [
-      "ung_thu",
-      "hac_to",
-      "nguy_hiem"
+    "specialist_referral": "Bác sĩ Da liễu ung thư da — KHẨN CẤP",
+    "red_flags": [
+      "Tổn thương hồng đỏ phát triển nhanh, không đau",
+      "Mạch máu bất thường dưới dermoscopy",
+      "Bất kỳ tổn thương hồng không rõ nguyên nhân tồn tại > 6 tuần"
     ],
+    "icd10": "C43",
+    "tags": ["ung_thu", "hac_to", "nguy_hiem"],
     "prevalence_vn": "Hiếm nhưng dễ bỏ sót",
     "climate_factor": false
   },
@@ -537,11 +625,13 @@
     "description": "U hạt vòng là viêm da lành tính không rõ nguyên nhân, sẩn nhỏ tập hợp thành vòng. Thường không ngứa.",
     "recommendation": "Tự khỏi 1-2 năm. Corticosteroid tại chỗ để tăng tốc lành. Dapsone cho thể lan rộng.",
     "follow_up": "Hàng năm. Kiểm tra đường huyết (liên quan ĐTĐ).",
-    "icd10": "L92.0",
-    "tags": [
-      "lanh_tinh",
-      "viem_da"
+    "specialist_referral": "Bác sĩ Da liễu",
+    "red_flags": [
+      "Granuloma annulare lan rộng — tầm soát đái tháo đường và HIV",
+      "Tổn thương không tự khỏi sau 2 năm"
     ],
+    "icd10": "L92.0",
+    "tags": ["lanh_tinh", "viem_da"],
     "prevalence_vn": "Khá phổ biến",
     "climate_factor": false
   },
@@ -555,11 +645,13 @@
     "description": "U huyết quản sừng hóa là tổn thương mạch máu lành tính với bề mặt sừng hóa. Dưới dermoscopy thấy dark lacunae. Có thể liên quan bệnh Fabry.",
     "recommendation": "Không cần điều trị. Laser hoặc đốt điện vì thẩm mỹ. Kiểm tra enzyme alpha-galactosidase A nếu nhiều tổn thương.",
     "follow_up": "Hàng năm.",
-    "icd10": "D18.0",
-    "tags": [
-      "lanh_tinh",
-      "mach_mau"
+    "specialist_referral": "Bác sĩ Da liễu (nếu nhiều tổn thương → tầm soát Fabry)",
+    "red_flags": [
+      "Nhiều angiokeratoma ở thân mình và cơ quan sinh dục (bệnh Fabry)",
+      "Tổn thương chảy máu dai dẳng"
     ],
+    "icd10": "D18.0",
+    "tags": ["lanh_tinh", "mach_mau"],
     "prevalence_vn": "Tương đối phổ biến",
     "climate_factor": false
   },
@@ -573,11 +665,13 @@
     "description": "Xanthelasma là lắng đọng lipid ở mí mắt, liên quan rối loạn lipid máu. Liên quan chế độ ăn nhiều dầu mỡ phổ biến ở Việt Nam.",
     "recommendation": "Xét nghiệm lipid. Điều trị hạ lipid. Loại bỏ bằng đốt điện, laser CO2 hoặc phẫu thuật.",
     "follow_up": "Lipid máu 6 tháng/lần. Đánh giá tim mạch.",
-    "icd10": "H02.6",
-    "tags": [
-      "lanh_tinh",
-      "chuyen_hoa"
+    "specialist_referral": "Bác sĩ Da liễu + Bác sĩ Tim mạch/Nội tiết (kiểm tra lipid máu)",
+    "red_flags": [
+      "Xanthelasma ở người < 40 tuổi (nguy cơ tim mạch cao)",
+      "Xanthelasma lan rộng kết hợp xanthoma gân"
     ],
+    "icd10": "H02.6",
+    "tags": ["lanh_tinh", "chuyen_hoa"],
     "prevalence_vn": "Phổ biến, liên quan chế độ ăn người Việt",
     "climate_factor": false
   },
@@ -591,11 +685,13 @@
     "description": "Porokeratosis có tiềm năng ác tính hóa 5-10% thành SCC. Đặc trưng cornoid lamella ở bờ. Dưới dermoscopy thấy đường trắng bao quanh tổn thương.",
     "recommendation": "Bảo vệ UV. Retinoid tại chỗ/toàn thân. Laser, PDT hoặc 5-FU.",
     "follow_up": "6 tháng/lần. Sinh thiết bất kỳ thay đổi nào.",
-    "icd10": "L85.8",
-    "tags": [
-      "day_sung",
-      "tien_ung_thu"
+    "specialist_referral": "Bác sĩ Da liễu",
+    "red_flags": [
+      "Tổn thương dày lên hoặc loét (nguy cơ SCC)",
+      "Nhiều tổn thương lan rộng (porokeratosis disseminata — liên quan suy giảm miễn dịch)"
     ],
+    "icd10": "L85.8",
+    "tags": ["day_sung", "tien_ung_thu"],
     "prevalence_vn": "Ít phổ biến",
     "climate_factor": false
   },
@@ -605,14 +701,16 @@
     "name_vi": "Hạt kê da",
     "name_en": "Milia",
     "risk_level": "Low",
-    "color": "#f1f5f9",
+    "color": "#e2e8f0",
     "description": "Hạt kê da là nang keratin nhỏ (1-2mm), chấm trắng ngà. Phổ biến ở trẻ sơ sinh và người dùng kem dưỡng da nặng.",
     "recommendation": "Tự khỏi ở trẻ sơ sinh. Người lớn: chích nhẹ và nặn, đốt điện nhẹ, retinoid tại chỗ.",
     "follow_up": "Không cần theo dõi đặc biệt.",
-    "icd10": "L72.0",
-    "tags": [
-      "lanh_tinh"
+    "specialist_referral": "Bác sĩ Da liễu (tùy chọn, vì mục đích thẩm mỹ)",
+    "red_flags": [
+      "Milia ở người lớn xuất hiện đột ngột và nhiều — có thể liên quan bệnh tự miễn (bullous diseases)"
     ],
+    "icd10": "L72.0",
+    "tags": ["lanh_tinh"],
     "prevalence_vn": "Rất phổ biến ở trẻ sơ sinh",
     "climate_factor": false
   },
@@ -626,11 +724,13 @@
     "description": "Nấm lang ben do Malassezia furfur, nấm ký sinh thường trú trên da. Tạo mảng đổi màu ở thân mình. Rất phổ biến do khí hậu nóng ẩm Việt Nam.",
     "recommendation": "Kháng nấm tại chỗ (clotrimazole, ketoconazole shampoo). Fluconazole uống cho diện rộng. Điều trị dự phòng mùa hè.",
     "follow_up": "Tái khám nếu tái phát.",
-    "icd10": "B36.0",
-    "tags": [
-      "nhiem_nam",
-      "nhiet_doi"
+    "specialist_referral": "Bác sĩ Da liễu (nếu tái phát nhiều lần)",
+    "red_flags": [
+      "Tái phát thường xuyên (kiểm tra đái tháo đường, suy giảm miễn dịch)",
+      "Không đáp ứng điều trị chuẩn"
     ],
+    "icd10": "B36.0",
+    "tags": ["nhiem_nam", "nhiet_doi"],
     "prevalence_vn": "Rất phổ biến, đặc biệt học sinh, vận động viên",
     "climate_factor": true
   },
@@ -640,15 +740,18 @@
     "name_vi": "Bạch biến",
     "name_en": "Vitiligo",
     "risk_level": "Low",
-    "color": "#e2e8f0",
+    "color": "#cbd5e1",
     "description": "Bạch biến là bệnh tự miễn phá hủy tế bào hắc tố, gây mất sắc tố da. Ảnh hưởng 1-2% dân số toàn cầu.",
     "recommendation": "Corticosteroid mạnh tại chỗ. Tacrolimus/pimecrolimus. NB-UVB hiệu quả nhất. Ruxolitinib (JAK inhibitor) mới. Bảo vệ khỏi nắng.",
     "follow_up": "3-6 tháng. Sàng lọc bệnh tự miễn liên quan.",
-    "icd10": "L80",
-    "tags": [
-      "tu_mien",
-      "sac_to"
+    "specialist_referral": "Bác sĩ Da liễu chuyên khoa quang trị liệu",
+    "red_flags": [
+      "Bạch biến lan nhanh (segmental vitiligo)",
+      "Kèm rụng tóc, đau khớp, mệt mỏi (bệnh tự miễn phối hợp)",
+      "Ảnh hưởng tâm lý nghiêm trọng — cần hỗ trợ tâm lý"
     ],
+    "icd10": "L80",
+    "tags": ["tu_mien", "sac_to"],
     "prevalence_vn": "Phổ biến, ảnh hưởng tâm lý nhiều do da tối",
     "climate_factor": false
   },
@@ -662,11 +765,13 @@
     "description": "U nang bì thượng bì là nang lành tính chứa keratin, có lỗ thoát màu đen (punctum) trung tâm.",
     "recommendation": "Phẫu thuật cắt bỏ hoàn toàn là triệt căn. Kháng sinh nếu đang viêm cấp.",
     "follow_up": "Theo dõi 4 tuần sau phẫu thuật.",
-    "icd10": "L72.0",
-    "tags": [
-      "lanh_tinh",
-      "nang"
+    "specialist_referral": "Bác sĩ Da liễu hoặc Bác sĩ Phẫu thuật Da",
+    "red_flags": [
+      "Nang đỏ, đau, nóng (viêm cấp — không mổ ngay, điều trị kháng sinh trước)",
+      "Tái phát sau mổ (cắt bỏ không hoàn toàn)"
     ],
+    "icd10": "L72.0",
+    "tags": ["lanh_tinh", "nang"],
     "prevalence_vn": "Phổ biến",
     "climate_factor": false
   },
@@ -680,11 +785,13 @@
     "description": "Tăng sắc tố sau viêm sau mụn, chàm, chấn thương. Phổ biến hơn ở người da tối (Fitzpatrick IV-VI). Là vấn đề thẩm mỹ lớn với người Việt.",
     "recommendation": "Hydroquinone 2-4%, kojic acid, azelaic acid, niacinamide, arbutin. Retinoid. SPF 50+ bắt buộc. Laser Q-switched Nd:YAG.",
     "follow_up": "PIH mất 6-18 tháng. Mỗi 3 tháng/lần.",
-    "icd10": "L81.0",
-    "tags": [
-      "sac_to",
-      "sau_viem"
+    "specialist_referral": "Bác sĩ Da liễu chuyên khoa thẩm mỹ da",
+    "red_flags": [
+      "Tăng sắc tố kèm vết trắng (melasma phức tạp)",
+      "Không cải thiện sau 6 tháng điều trị"
     ],
+    "icd10": "L81.0",
+    "tags": ["sac_to", "sau_viem"],
     "prevalence_vn": "Rất phổ biến, đặc biệt sau mụn trứng cá",
     "climate_factor": false
   },
@@ -698,12 +805,14 @@
     "description": "Melanoma dạng nốt hung hãn nhất, phát triển thẳng đứng ngay từ đầu. Nốt phồng đen đến đỏ tím, phát triển nhanh trong vài tuần.",
     "recommendation": "Khẩn cấp — cắt bỏ và sinh thiết ngay lập tức.",
     "follow_up": "Mỗi 3 tháng, scanning toàn thân.",
-    "icd10": "C43",
-    "tags": [
-      "ung_thu",
-      "hac_to",
-      "nguy_hiem"
+    "specialist_referral": "Bác sĩ Da liễu ung thư da + Bác sĩ Ung thư nội khoa — KHẨN CẤP",
+    "red_flags": [
+      "Tổn thương phát triển trong vài tuần",
+      "Nốt nâng cao, cứng, đen hoặc đỏ tím",
+      "Bất kỳ tổn thương nốt mới không rõ nguyên nhân ở người > 40 tuổi"
     ],
+    "icd10": "C43",
+    "tags": ["ung_thu", "hac_to", "nguy_hiem"],
     "prevalence_vn": "Hiếm nhưng tiên lượng xấu",
     "climate_factor": false
   },
@@ -717,11 +826,13 @@
     "description": "Bệnh Bowen là SCC in situ giới hạn trong biểu bì. Mảng đỏ, đóng vảy, bờ rõ. Dưới dermoscopy thấy glomerular/coiled vessels đặc trưng.",
     "recommendation": "5-FU 5%, imiquimod 5%, PDT, áp lạnh hoặc curettage.",
     "follow_up": "6 tháng/lần. 3-8% tiến triển thành SCC xâm lấn.",
-    "icd10": "D04",
-    "tags": [
-      "tien_ung_thu",
-      "te_bao_vay"
+    "specialist_referral": "Bác sĩ Da liễu ung thư da",
+    "red_flags": [
+      "Tổn thương dày lên, nổi cao, loét (tiến triển thành SCC xâm lấn)",
+      "Bệnh Bowen vùng sinh dục (erythroplasia of Queyrat — nguy cơ xâm lấn cao hơn)"
     ],
+    "icd10": "D04",
+    "tags": ["tien_ung_thu", "te_bao_vay"],
     "prevalence_vn": "Phổ biến ở vùng nắng",
     "climate_factor": true
   },
@@ -735,11 +846,14 @@
     "description": "U tuyến bã nhờn có thể là dấu hiệu hội chứng Muir-Torre (biến thể hội chứng Lynch). Cần tầm soát ung thư đại tràng.",
     "recommendation": "Sinh thiết bắt buộc. Tầm soát Muir-Torre nếu xác nhận. Nội soi đại tràng.",
     "follow_up": "Theo dõi da liễu và ung thư nội khoa.",
-    "icd10": "D23",
-    "tags": [
-      "tuyen_ba_nhon",
-      "hoi_chung"
+    "specialist_referral": "Bác sĩ Da liễu + Bác sĩ Ung thư tiêu hóa (tầm soát đại tràng)",
+    "red_flags": [
+      "U tuyến bã nhờn ở người < 50 tuổi",
+      "Tiền sử gia đình ung thư đại tràng hoặc nội mạc tử cung",
+      "Nhiều u tuyến bã nhờn cùng lúc"
     ],
+    "icd10": "D23",
+    "tags": ["tuyen_ba_nhon", "hoi_chung"],
     "prevalence_vn": "Hiếm gặp",
     "climate_factor": false
   },
@@ -753,12 +867,14 @@
     "description": "Desmoplastic Melanoma hiếm nhất, giả dạng sẹo hoặc u xơ thần kinh. Tái phát tại chỗ rất cao.",
     "recommendation": "Cắt bỏ rộng (2-3cm). Xạ trị bổ trợ khuyến nghị mạnh.",
     "follow_up": "Mỗi 3 tháng trong 5 năm. MRI tại chỗ định kỳ.",
-    "icd10": "C43",
-    "tags": [
-      "ung_thu",
-      "hac_to",
-      "hiem_gap"
+    "specialist_referral": "Bác sĩ Ung thư nội khoa + Bác sĩ Da liễu ung thư da + Xạ trị",
+    "red_flags": [
+      "Tổn thương dạng sẹo mới không có tiền sử chấn thương",
+      "Tổn thương cứng, không đau, phát triển chậm",
+      "Bất kỳ u sẹo nghi ngờ ở đầu, cổ, lưng"
     ],
+    "icd10": "C43",
+    "tags": ["ung_thu", "hac_to", "hiem_gap"],
     "prevalence_vn": "Rất hiếm",
     "climate_factor": false
   },
@@ -772,11 +888,15 @@
     "description": "U mỡ là khối u lành tính của tế bào mỡ, mềm, di động tốt. U mỡ nhiều nơi có thể là hội chứng Dercum hoặc Madelung.",
     "recommendation": "Không cần điều trị nếu không triệu chứng. Phẫu thuật nếu lớn hoặc đau. Sinh thiết nếu cứng, phát triển nhanh.",
     "follow_up": "Hàng năm.",
-    "icd10": "D17",
-    "tags": [
-      "lanh_tinh",
-      "mo"
+    "specialist_referral": "Bác sĩ Da liễu hoặc Bác sĩ Phẫu thuật Tổng quát",
+    "red_flags": [
+      "U cứng, không di động (nghi liposarcoma)",
+      "Phát triển nhanh trong vài tuần",
+      "Đau tự phát hoặc khi chạm vào",
+      "Kích thước > 5cm"
     ],
+    "icd10": "D17",
+    "tags": ["lanh_tinh", "mo"],
     "prevalence_vn": "Rất phổ biến",
     "climate_factor": false
   },
@@ -790,12 +910,14 @@
     "description": "Melanoma vùng cực phổ biến nhất ở người Á, xảy ra lòng bàn tay/chân, dưới móng. Dấu hiệu Hutchinson đặc trưng. Thường chẩn đoán muộn.",
     "recommendation": "Sinh thiết sớm mọi tổn thương bất thường ở vùng acral.",
     "follow_up": "Mỗi 3 tháng. Kiểm tra móng định kỳ.",
-    "icd10": "C43",
-    "tags": [
-      "ung_thu",
-      "hac_to",
-      "nguoi_viet"
+    "specialist_referral": "Bác sĩ Da liễu ung thư da + Bác sĩ Ung thư nội khoa — KHẨN CẤP",
+    "red_flags": [
+      "Vệt nâu đen dưới móng không do chấn thương (melanonychia striata)",
+      "Dấu hiệu Hutchinson (sắc tố lan vào nền móng và vùng quanh móng)",
+      "Tổn thương lòng bàn chân/tay thay đổi kích thước"
     ],
+    "icd10": "C43",
+    "tags": ["ung_thu", "hac_to", "nguoi_viet"],
     "prevalence_vn": "Thể melanoma phổ biến nhất ở người Việt Nam",
     "climate_factor": false
   }

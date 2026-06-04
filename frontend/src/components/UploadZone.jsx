@@ -1,21 +1,36 @@
 import React, { useRef, useState, useCallback } from 'react'
-import { Upload, ImagePlus, AlertCircle, Microscope, ArrowRight } from 'lucide-react'
+import {
+  Upload, ImagePlus, AlertCircle, ArrowRight,
+  CheckCircle, FileImage, Zap, Shield
+} from 'lucide-react'
 
 const ACCEPTED = ['image/jpeg', 'image/jpg', 'image/png', 'image/bmp', 'image/tiff', 'image/webp']
-const MAX_MB = 20
+const ACCEPTED_EXTS = ['.jpg', '.jpeg', '.png', '.bmp', '.tif', '.tiff', '.webp']
+const MAX_MB    = 20
+
+const TIPS = [
+  { icon: Zap,       text: 'Use well-lit, in-focus dermoscopy images for best results' },
+  { icon: Shield,    text: 'Minimum recommended resolution: 600 × 450 px' },
+  { icon: CheckCircle, text: 'Centre the lesion in the frame before uploading' },
+]
 
 export default function UploadZone({ onFileSelect, disabled }) {
-  const inputRef = useRef(null)
+  const inputRef              = useRef(null)
   const [dragging, setDragging] = useState(false)
   const [fileError, setFileError] = useState('')
 
   const validate = (file) => {
-    if (!ACCEPTED.includes(file.type)) {
-      setFileError(`Định dạng không hỗ trợ: ${file.type}. Sử dụng JPEG, PNG, BMP, TIFF, hoặc WEBP.`)
+    const ext = (file.name || '').toLowerCase().slice(((file.name || '').lastIndexOf('.')))
+    const hasValidType = file.type && ACCEPTED.includes(file.type)
+    const hasValidExt = ACCEPTED_EXTS.includes(ext)
+
+    if (!hasValidType && !hasValidExt) {
+      const typeLabel = file.type || 'unknown'
+      setFileError(`Unsupported format: ${typeLabel}. Please use JPEG, PNG, BMP, TIFF, or WEBP.`)
       return false
     }
     if (file.size > MAX_MB * 1024 * 1024) {
-      setFileError(`File quá lớn (${(file.size / 1e6).toFixed(1)} MB). Tối đa: ${MAX_MB} MB.`)
+      setFileError(`File too large (${(file.size / 1e6).toFixed(1)} MB). Maximum: ${MAX_MB} MB.`)
       return false
     }
     setFileError('')
@@ -27,35 +42,36 @@ export default function UploadZone({ onFileSelect, disabled }) {
     if (validate(file)) onFileSelect(file)
   }, [onFileSelect, disabled])
 
-  const onDrop = (e) => { e.preventDefault(); setDragging(false); handleFile(e.dataTransfer.files?.[0]) }
-  const onDragOver = (e) => { e.preventDefault(); setDragging(true) }
+  const onDrop      = (e) => { e.preventDefault(); setDragging(false); handleFile(e.dataTransfer.files?.[0]) }
+  const onDragOver  = (e) => { e.preventDefault(); setDragging(true) }
   const onDragLeave = () => setDragging(false)
 
   return (
-    <div className="animate-fade-in max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto animate-fade-in" id="platform">
 
-      {/* Hero */}
-      <div className="text-center mb-10 space-y-4">
-        <div className="inline-flex items-center gap-2 text-blue-700 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">
-          <Microscope className="w-4 h-4" />
-          Hệ Thống Phân Tích Tổn Thương Da Bằng AI
-        </div>
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-          Tải Ảnh Da Liễu
-          <br />
-          <span className="text-blue-600">Nhận Kết Quả Phân Tích</span>
+      {/* Section header */}
+      <div className="text-center mb-10">
+        <span className="inline-flex items-center gap-2 text-blue-700 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium mb-4">
+          <FileImage className="w-4 h-4" />
+          Upload Workspace
+        </span>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+          Upload Your Dermoscopy Image
         </h2>
-        <p className="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
-          Hệ thống 2 giai đoạn: phân đoạn tổn thương bằng UNet++ → phân loại bệnh da liễu với xếp hạng xác suất từ cơ sở tri thức y tế 44 bệnh.
+        <p className="text-gray-500 text-base max-w-xl mx-auto">
+          The AI pipeline will run 9 stages automatically and return a full clinical analysis report
+          in seconds.
         </p>
       </div>
 
-      {/* Pipeline preview */}
-      <div className="flex items-center justify-center gap-2 mb-8 flex-wrap">
-        {['Ảnh gốc', 'Phân đoạn', 'Heatmap', 'Trích xuất ROI', 'Phân loại bệnh'].map((s, i, arr) => (
+      {/* Pipeline preview strip */}
+      <div className="flex items-center justify-center gap-1.5 mb-8 flex-wrap">
+        {['Quality Check', 'Segmentation', 'Mask Refinement', 'ROI Extraction', 'Classification', 'Top-K Ranking'].map((s, i, arr) => (
           <React.Fragment key={s}>
-            <span className="text-xs font-medium text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-full">{s}</span>
-            {i < arr.length - 1 && <ArrowRight className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />}
+            <span className="text-xs font-medium text-indigo-700 bg-indigo-50 border border-indigo-200 px-2.5 py-1 rounded-full">
+              {s}
+            </span>
+            {i < arr.length - 1 && <ArrowRight className="w-3 h-3 text-gray-300 flex-shrink-0" />}
           </React.Fragment>
         ))}
       </div>
@@ -68,39 +84,48 @@ export default function UploadZone({ onFileSelect, disabled }) {
         onClick={() => !disabled && inputRef.current?.click()}
         className={`
           relative group cursor-pointer rounded-3xl border-2 border-dashed transition-all duration-200
-          flex flex-col items-center justify-center gap-5 py-20 px-8
+          flex flex-col items-center justify-center gap-6 py-20 px-8
           ${dragging
-            ? 'border-blue-500 bg-blue-50 scale-[1.01]'
-            : 'border-gray-300 hover:border-blue-400 bg-white hover:bg-blue-50/30'
+            ? 'border-blue-500 bg-blue-50/80 scale-[1.01] shadow-lg shadow-blue-100'
+            : 'border-gray-300 bg-white hover:border-blue-400 hover:bg-blue-50/20 hover:shadow-md'
           }
           ${disabled ? 'cursor-not-allowed opacity-50' : ''}
         `}
       >
+        {/* Scanning animation while dragging */}
         {dragging && (
           <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none">
-            <div className="absolute left-0 right-0 h-0.5 bg-blue-500 animate-scan opacity-70" style={{ position: 'absolute' }} />
+            <div className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent animate-scan" />
           </div>
         )}
 
-        {/* Icon */}
+        {/* Upload icon */}
         <div className={`
-          w-20 h-20 rounded-2xl flex items-center justify-center transition-all duration-200
-          ${dragging ? 'bg-blue-100 scale-110' : 'bg-gray-100 group-hover:bg-blue-100'}
+          w-24 h-24 rounded-2xl flex items-center justify-center transition-all duration-300
+          ${dragging
+            ? 'bg-blue-100 scale-110 shadow-lg shadow-blue-200'
+            : 'bg-gradient-to-br from-gray-100 to-gray-50 group-hover:from-blue-50 group-hover:to-indigo-50 group-hover:scale-105'
+          }
         `}>
-          <ImagePlus className={`w-10 h-10 transition-colors ${dragging ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-500'}`} />
+          <ImagePlus className={`w-12 h-12 transition-colors ${dragging ? 'text-blue-600' : 'text-gray-300 group-hover:text-blue-500'}`} />
         </div>
 
-        <div className="text-center space-y-1.5">
-          <p className="text-xl font-semibold text-gray-800">
-            {dragging ? 'Thả file để phân tích' : 'Kéo & thả ảnh da liễu'}
+        <div className="text-center space-y-2">
+          <p className="text-xl font-bold text-gray-800">
+            {dragging ? 'Release to Analyse' : 'Drag & Drop Dermoscopy Image'}
           </p>
           <p className="text-gray-500">
-            hoặc <span className="text-blue-600 font-medium underline underline-offset-2 cursor-pointer">chọn file</span>
+            or{' '}
+            <span className="text-blue-600 font-semibold underline underline-offset-2 cursor-pointer">
+              click to browse files
+            </span>
           </p>
-          <p className="text-gray-400 text-sm">JPEG · PNG · BMP · TIFF · WEBP &nbsp;·&nbsp; Tối đa {MAX_MB} MB</p>
+          <p className="text-gray-400 text-sm">
+            JPEG · PNG · BMP · TIFF · WEBP &nbsp;·&nbsp; Max {MAX_MB} MB
+          </p>
         </div>
 
-        <Upload className={`absolute right-6 top-6 w-5 h-5 transition-colors ${dragging ? 'text-blue-500' : 'text-gray-300 group-hover:text-gray-400'}`} />
+        <Upload className={`absolute right-6 top-6 w-5 h-5 transition-colors ${dragging ? 'text-blue-400' : 'text-gray-200 group-hover:text-gray-300'}`} />
 
         <input
           ref={inputRef}
@@ -112,12 +137,26 @@ export default function UploadZone({ onFileSelect, disabled }) {
         />
       </div>
 
+      {/* File error */}
       {fileError && (
-        <div className="mt-4 flex items-center gap-2 text-red-700 bg-red-50 border border-red-200 rounded-xl p-4 text-sm">
-          <AlertCircle className="w-4 h-4 flex-shrink-0" />
-          {fileError}
+        <div className="mt-4 flex items-center gap-3 text-red-700 bg-red-50 border border-red-200 rounded-2xl p-4 text-sm">
+          <AlertCircle className="w-5 h-5 flex-shrink-0" />
+          <span>{fileError}</span>
         </div>
       )}
+
+      {/* Tips */}
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+        {TIPS.map(({ icon: Icon, text }) => (
+          <div key={text} className="flex items-start gap-3 bg-gray-50 border border-gray-100 rounded-2xl p-4">
+            <div className="w-7 h-7 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <Icon className="w-4 h-4 text-blue-600" />
+            </div>
+            <p className="text-xs text-gray-600 leading-relaxed">{text}</p>
+          </div>
+        ))}
+      </div>
+
     </div>
   )
 }
