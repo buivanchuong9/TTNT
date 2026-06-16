@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { Loader2, Upload, ScanSearch, Brain, Scissors, Sliders, BarChart2, Eye, FileCheck, ShieldCheck } from 'lucide-react'
 
 const PIPELINE_STAGES = [
-  { icon: ShieldCheck,  label: 'Image Quality Check',   desc: 'Blur · brightness · contrast' },
-  { icon: ScanSearch,   label: 'UNet++ Segmentation',   desc: 'Lesion boundary detection' },
-  { icon: Scissors,     label: 'Mask Refinement',       desc: 'LCC · convex hull · smoothing' },
-  { icon: Upload,       label: 'ROI Extraction',        desc: 'Lesion crop with padding' },
-  { icon: Brain,        label: 'EfficientNet Classification', desc: 'Deep feature analysis' },
-  { icon: Sliders,      label: 'Confidence Calibration', desc: 'Temperature scaling T=1.3' },
-  { icon: BarChart2,    label: 'Top-K Ranking',         desc: 'Differential diagnosis list' },
-  { icon: Eye,          label: 'Explainability',        desc: 'Clinical metadata generation' },
-  { icon: FileCheck,    label: 'Knowledge Enrichment',  desc: 'Medical knowledge base lookup' },
+  { icon: ShieldCheck,  label: 'Kiểm tra chất lượng ảnh',   desc: 'Độ mờ · độ sáng · độ tương phản' },
+  { icon: ScanSearch,   label: 'Phân vùng UNet++',   desc: 'Phát hiện ranh giới tổn thương' },
+  { icon: Scissors,     label: 'Tinh chỉnh mặt nạ',       desc: 'LCC · bao lồi · làm mịn' },
+  { icon: Upload,       label: 'Trích xuất ROI',        desc: 'Cắt vùng tổn thương có đệm' },
+  { icon: Brain,        label: 'Phân loại EfficientNet', desc: 'Phân tích đặc trưng sâu' },
+  { icon: Sliders,      label: 'Hiệu chỉnh độ tin cậy', desc: 'Tỷ lệ nhiệt độ T=1.3' },
+  { icon: BarChart2,    label: 'Xếp hạng Top-K',         desc: 'Danh sách chẩn đoán phân biệt' },
+  { icon: Eye,          label: 'Tính minh bạch',        desc: 'Tạo siêu dữ liệu lâm sàng' },
+  { icon: FileCheck,    label: 'Truy xuất tri thức',  desc: 'Tra cứu cơ sở dữ liệu y khoa' },
 ]
 
 export default function LoadingState({ stage, uploadPct, previewSrc }) {
@@ -32,7 +32,7 @@ export default function LoadingState({ stage, uploadPct, previewSrc }) {
         <div className="card flex flex-col gap-4 min-h-[320px] justify-center">
           <div className="text-center">
             <p className="text-xs font-semibold text-blue-600 uppercase tracking-widest mb-3">
-              {stage === 'uploading' ? 'Uploading Image' : 'Running AI Pipeline'}
+              {stage === 'uploading' ? 'Đang tải ảnh lên' : 'Đang chạy quy trình AI'}
             </p>
           </div>
 
@@ -61,7 +61,7 @@ export default function LoadingState({ stage, uploadPct, previewSrc }) {
           {stage === 'uploading' ? (
             <div className="space-y-2">
               <div className="flex justify-between text-xs text-gray-500">
-                <span>Uploading…</span>
+                <span>Đang tải lên…</span>
                 <span className="font-bold text-blue-600">{uploadPct}%</span>
               </div>
               <div className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
@@ -86,7 +86,7 @@ export default function LoadingState({ stage, uploadPct, previewSrc }) {
         {/* Pipeline progress steps */}
         <div className="card">
           <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
-            AI Pipeline Progress
+            Tiến trình AI
           </h3>
           <div className="space-y-1.5">
             {PIPELINE_STAGES.map((s, i) => {
@@ -128,7 +128,7 @@ export default function LoadingState({ stage, uploadPct, previewSrc }) {
                   </div>
                   {done && (
                     <span className="ml-auto text-[10px] font-bold text-green-600 bg-green-100 px-1.5 py-0.5 rounded-full flex-shrink-0">
-                      Done
+                      Xong
                     </span>
                   )}
                 </div>

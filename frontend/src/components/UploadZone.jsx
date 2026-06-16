@@ -9,9 +9,9 @@ const ACCEPTED_EXTS = ['.jpg', '.jpeg', '.png', '.bmp', '.tif', '.tiff', '.webp'
 const MAX_MB    = 20
 
 const TIPS = [
-  { icon: Zap,       text: 'Use well-lit, in-focus dermoscopy images for best results' },
-  { icon: Shield,    text: 'Minimum recommended resolution: 600 × 450 px' },
-  { icon: CheckCircle, text: 'Centre the lesion in the frame before uploading' },
+  { icon: Zap,       text: 'Sử dụng ảnh dermoscopy rõ nét, đủ sáng để có kết quả tốt nhất' },
+  { icon: Shield,    text: 'Độ phân giải tối thiểu được khuyến nghị: 600 × 450 px' },
+  { icon: CheckCircle, text: 'Đặt vùng tổn thương ở trung tâm khung hình trước khi tải lên' },
 ]
 
 export default function UploadZone({ onFileSelect, disabled }) {
@@ -25,12 +25,12 @@ export default function UploadZone({ onFileSelect, disabled }) {
     const hasValidExt = ACCEPTED_EXTS.includes(ext)
 
     if (!hasValidType && !hasValidExt) {
-      const typeLabel = file.type || 'unknown'
-      setFileError(`Unsupported format: ${typeLabel}. Please use JPEG, PNG, BMP, TIFF, or WEBP.`)
+      const typeLabel = file.type || 'không rõ'
+      setFileError(`Định dạng không hỗ trợ: ${typeLabel}. Vui lòng sử dụng JPEG, PNG, BMP, TIFF, hoặc WEBP.`)
       return false
     }
     if (file.size > MAX_MB * 1024 * 1024) {
-      setFileError(`File too large (${(file.size / 1e6).toFixed(1)} MB). Maximum: ${MAX_MB} MB.`)
+      setFileError(`Tệp quá lớn (${(file.size / 1e6).toFixed(1)} MB). Tối đa: ${MAX_MB} MB.`)
       return false
     }
     setFileError('')
@@ -53,20 +53,19 @@ export default function UploadZone({ onFileSelect, disabled }) {
       <div className="text-center mb-10">
         <span className="inline-flex items-center gap-2 text-blue-700 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium mb-4">
           <FileImage className="w-4 h-4" />
-          Upload Workspace
+          Khu vực phân tích
         </span>
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-          Upload Your Dermoscopy Image
+          Tải Lên Hình Ảnh Da Liễu
         </h2>
         <p className="text-gray-500 text-base max-w-xl mx-auto">
-          The AI pipeline will run 9 stages automatically and return a full clinical analysis report
-          in seconds.
+          Hệ thống AI sẽ tự động chạy 9 quy trình xử lý và trả về báo cáo phân tích lâm sàng đầy đủ chỉ trong vài giây.
         </p>
       </div>
 
       {/* Pipeline preview strip */}
       <div className="flex items-center justify-center gap-1.5 mb-8 flex-wrap">
-        {['Quality Check', 'Segmentation', 'Mask Refinement', 'ROI Extraction', 'Classification', 'Top-K Ranking'].map((s, i, arr) => (
+        {['Kiểm tra chất lượng', 'Phân vùng', 'Tinh chỉnh', 'Cắt vùng tổn thương', 'Phân loại', 'Xếp hạng Top-K'].map((s, i, arr) => (
           <React.Fragment key={s}>
             <span className="text-xs font-medium text-indigo-700 bg-indigo-50 border border-indigo-200 px-2.5 py-1 rounded-full">
               {s}
@@ -112,17 +111,35 @@ export default function UploadZone({ onFileSelect, disabled }) {
 
         <div className="text-center space-y-2">
           <p className="text-xl font-bold text-gray-800">
-            {dragging ? 'Release to Analyse' : 'Drag & Drop Dermoscopy Image'}
+            {dragging ? 'Thả để phân tích' : 'Kéo & Thả Hình Ảnh'}
           </p>
           <p className="text-gray-500">
-            or{' '}
+            hoặc{' '}
             <span className="text-blue-600 font-semibold underline underline-offset-2 cursor-pointer">
-              click to browse files
+              nhấp để duyệt tệp
             </span>
           </p>
           <p className="text-gray-400 text-sm">
-            JPEG · PNG · BMP · TIFF · WEBP &nbsp;·&nbsp; Max {MAX_MB} MB
+            JPEG · PNG · BMP · TIFF · WEBP &nbsp;·&nbsp; Tối đa {MAX_MB} MB
           </p>
+          <button
+            type="button"
+            id="mock-upload-btn"
+            onClick={async (e) => {
+              e.stopPropagation();
+              try {
+                const res = await fetch('/logo.jpeg');
+                const blob = await res.blob();
+                const file = new File([blob], 'logo.jpeg', { type: 'image/jpeg' });
+                onFileSelect(file);
+              } catch (err) {
+                console.error('Mock upload failed:', err);
+              }
+            }}
+            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+          >
+            Mock Upload (Dùng Ảnh Mẫu)
+          </button>
         </div>
 
         <Upload className={`absolute right-6 top-6 w-5 h-5 transition-colors ${dragging ? 'text-blue-400' : 'text-gray-200 group-hover:text-gray-300'}`} />

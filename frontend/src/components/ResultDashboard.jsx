@@ -14,7 +14,7 @@ const RISK_CONFIG = {
     icon: XCircle,
     bar:  'bg-red-500',
     ring: 'ring-red-200',
-    msg:  'Serious risk detected. Seek immediate specialist consultation for biopsy and diagnosis confirmation.',
+    msg:  'Phát hiện nguy cơ rất cao. Yêu cầu thăm khám chuyên khoa ngay lập tức để sinh thiết và xác nhận chẩn đoán.',
   },
   High: {
     bg:   'bg-orange-50 border-orange-200',
@@ -23,7 +23,7 @@ const RISK_CONFIG = {
     icon: AlertTriangle,
     bar:  'bg-orange-500',
     ring: 'ring-orange-200',
-    msg:  'High risk lesion. Schedule a dermatology appointment as soon as possible.',
+    msg:  'Tổn thương có nguy cơ cao. Vui lòng lên lịch khám da liễu càng sớm càng tốt.',
   },
   Medium: {
     bg:   'bg-yellow-50 border-yellow-200',
@@ -32,7 +32,7 @@ const RISK_CONFIG = {
     icon: Shield,
     bar:  'bg-yellow-500',
     ring: 'ring-yellow-200',
-    msg:  'Medium risk. Periodic monitoring and dermatology consultation recommended.',
+    msg:  'Nguy cơ trung bình. Cần theo dõi định kỳ và tham khảo ý kiến bác sĩ da liễu.',
   },
   Low: {
     bg:   'bg-green-50 border-green-200',
@@ -41,7 +41,7 @@ const RISK_CONFIG = {
     icon: CheckCircle,
     bar:  'bg-green-500',
     ring: 'ring-green-200',
-    msg:  'Low risk. Continue annual skin checks and protect against UV exposure.',
+    msg:  'Nguy cơ thấp. Tiếp tục kiểm tra da hàng năm và bảo vệ da khỏi tia UV.',
   },
 }
 
@@ -49,7 +49,7 @@ function ConfidenceMeter({ value, barClass, textClass }) {
   return (
     <div className="flex-1 min-w-0">
       <div className="flex items-center justify-between mb-1.5">
-        <span className={`text-xs font-medium ${textClass}`}>Calibrated Confidence</span>
+        <span className={`text-xs font-medium ${textClass}`}>Độ tin cậy của AI</span>
         <span className={`text-3xl font-black font-mono ${textClass}`}>{value}%</span>
       </div>
       <div className="bg-white/60 rounded-full h-3 overflow-hidden border border-white">
@@ -89,7 +89,7 @@ export default function ResultDashboard({ result, onNewAnalysis }) {
                 <RiskIcon className={`w-8 h-8 ${cfg.text}`} />
               </div>
               <div>
-                <p className={`text-[10px] font-black uppercase tracking-widest ${cfg.sub}`}>AI Primary Diagnosis</p>
+                <p className={`text-[10px] font-black uppercase tracking-widest ${cfg.sub}`}>CHẨN ĐOÁN SƠ BỘ TỪ AI</p>
                 <h2 className={`text-2xl font-black leading-tight ${cfg.text}`}>{top.name_en}</h2>
                 <p className={`text-sm font-medium ${cfg.sub}`}>{top.name_vi}</p>
                 <span className={`text-[11px] font-mono bg-white/60 px-2 py-0.5 rounded border ${cfg.sub} border-current`}>
@@ -108,7 +108,7 @@ export default function ResultDashboard({ result, onNewAnalysis }) {
                 className="flex items-center gap-2 bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 text-xs font-semibold px-4 py-2.5 rounded-xl transition-colors shadow-sm"
               >
                 <RefreshCw className="w-3.5 h-3.5" />
-                New Analysis
+                Phân tích mới
               </button>
             </div>
           </div>
@@ -126,11 +126,9 @@ export default function ResultDashboard({ result, onNewAnalysis }) {
         <div className="bg-amber-50 border border-amber-300 rounded-2xl px-5 py-4 flex items-start gap-3">
           <AlertTriangle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-sm font-bold text-amber-800">AI Confidence is Low</p>
+            <p className="text-sm font-bold text-amber-800">Độ tin cậy của AI thấp</p>
             <p className="text-xs text-amber-700 leading-relaxed mt-0.5">
-              The model's probability for the top prediction is below the reliable threshold.
-              This result should be treated as a rough indication only.
-              Clinical review by a dermatologist is strongly recommended before any action.
+              Độ tin cậy cho kết quả phân tích hiện dưới ngưỡng tiêu chuẩn. Kết quả này chỉ mang tính chất tham khảo. Vui lòng tham khảo ý kiến bác sĩ chuyên khoa trước khi thực hiện bất kỳ hành động nào.
             </p>
           </div>
         </div>
@@ -165,16 +163,14 @@ export default function ResultDashboard({ result, onNewAnalysis }) {
       <div className="bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-3 text-xs text-slate-500">
         <Shield className="w-4 h-4 text-slate-400 flex-shrink-0" />
         <p className="flex-1 leading-relaxed">
-          <strong className="text-slate-700">Clinical Disclaimer:</strong> This AI analysis is intended for research
-          and educational purposes only. It does not constitute a medical diagnosis and must not replace evaluation
-          by a licensed dermatologist or physician. Always seek professional medical advice.
+          <strong className="text-slate-700">Lưu ý lâm sàng:</strong> Kết quả phân tích AI này chỉ dành cho mục đích tham khảo và hỗ trợ chẩn đoán. Đây không phải là chẩn đoán y khoa chính thức và không thể thay thế đánh giá từ bác sĩ chuyên khoa da liễu. Vui lòng tham khảo ý kiến chuyên gia y tế.
         </p>
         <button
           onClick={onNewAnalysis}
           className="flex items-center gap-1.5 text-blue-600 hover:text-blue-800 font-semibold whitespace-nowrap transition-colors"
         >
           <RefreshCw className="w-3.5 h-3.5" />
-          New Analysis
+          Phân tích mới
         </button>
       </div>
 

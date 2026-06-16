@@ -1,0 +1,58 @@
+[
+  {
+    "schema_version": 2,
+    "timestamp": "2026-06-15T23:07:46.081401",
+    "request_id": "236b23b1",
+    "filename": "01-Benh-ngoai-da-TE-22909.jpg.webp",
+    "model_version": "unetpp-efficientnetb2-v1",
+    "classifier_type": "ABCD Rule-Based (clinical heuristic)",
+    "prediction": "Actinic Keratosis / Intraepithelial Carcinoma",
+    "prediction_code": "AKIEC",
+    "risk_level": "High",
+    "confidence_pct": 24.1,
+    "confidence_level": "Low",
+    "top_k": [
+      {
+        "rank": 1,
+        "code": "AKIEC",
+        "confidence_pct": 24.1
+      },
+      {
+        "rank": 2,
+        "code": "BCC",
+        "confidence_pct": 23.7
+      },
+      {
+        "rank": 3,
+        "code": "VASC",
+        "confidence_pct": 17.7
+      },
+      {
+        "rank": 4,
+        "code": "NV",
+        "confidence_pct": 17.6
+      },
+      {
+        "rank": 5,
+        "code": "BKL",
+        "confidence_pct": 16.9
+      }
+    ],
+    "roi_detected": true,
+    "lesion_area_pct": 23.04,
+    "segmentation_coverage_pct": 59.1,
+    "roi_width": 234,
+    "roi_height": 202,
+    "num_mask_components": 1,
+    "calibration_temperature": 1.3,
+    "blur_score": 575.85,
+    "brightness": 170.8,
+    "quality_passed": true,
+    "quality_warnings": [
+      "Low image contrast detected (score: 15.4). Results may be less accurate.",
+      "Strong colour cast detected. Ensure the image uses standard white-balance dermoscopy lighting."
+    ],
+    "inference_time_ms": 789.9,
+    "error": null
+  }
+]

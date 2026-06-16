@@ -8,6 +8,13 @@ const RISK_BADGE = {
   Low:      'badge-risk-low',
 }
 
+const RISK_MAP = {
+  Critical: 'Nguy Hiểm',
+  High: 'Cao',
+  Medium: 'Trung bình',
+  Low: 'Thấp'
+}
+
 const RANK_STYLE = [
   { bg: 'bg-amber-50 border-amber-200',    num: 'bg-amber-100 text-amber-700' },
   { bg: 'bg-slate-50 border-slate-200',    num: 'bg-slate-100 text-slate-600' },
@@ -24,8 +31,8 @@ export default function DiseaseRanking({ predictions, onSelect, selected }) {
           <Trophy className="w-4 h-4 text-amber-600" />
         </div>
         <div>
-          <h3 className="text-sm font-bold text-gray-900">Top-K Disease Ranking</h3>
-          <p className="text-xs text-gray-400">Ranked by calibrated probability</p>
+          <h3 className="text-sm font-bold text-gray-900">Xếp hạng bệnh lý Top-K</h3>
+          <p className="text-xs text-gray-400">Xếp hạng theo độ tin cậy</p>
         </div>
         <span className="ml-auto text-xs text-gray-400 bg-gray-50 border border-gray-200 px-2 py-0.5 rounded-full">
           Top-{predictions.length}
@@ -63,11 +70,11 @@ export default function DiseaseRanking({ predictions, onSelect, selected }) {
                   <div className="flex items-center gap-1.5 mb-0.5 flex-wrap">
                     <span className="text-xs font-bold text-gray-900 truncate">{disease.name_en}</span>
                     <span className={RISK_BADGE[disease.risk_level] || 'badge-risk-low'}>
-                      {disease.risk_level}
+                      {RISK_MAP[disease.risk_level] || disease.risk_level}
                     </span>
                     {isTop && (
                       <span className="text-[10px] font-bold text-blue-700 bg-blue-100 border border-blue-200 px-1.5 py-0.5 rounded-full">
-                        Best Match
+                        Phù hợp nhất
                       </span>
                     )}
                   </div>

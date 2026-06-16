@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { ChevronRight, Layers, ScanSearch, Thermometer, Crop, Brain, ZoomIn, ZoomOut } from 'lucide-react'
 
 const STEPS = [
-  { key: 'original', label: 'Original',     icon: Layers,      desc: 'Input image',                color: 'bg-slate-600' },
-  { key: 'mask',     label: 'Refined Mask', icon: ScanSearch,  desc: 'UNet++ + LCC refinement',    color: 'bg-blue-600' },
-  { key: 'heatmap',  label: 'Heatmap',      icon: Thermometer, desc: 'Probability overlay (JET)',  color: 'bg-orange-500' },
-  { key: 'roi',      label: 'ROI Crop',     icon: Crop,        desc: 'Lesion region for classifier', color: 'bg-indigo-600' },
+  { key: 'original', label: 'Ảnh gốc',     icon: Layers,      desc: 'Hình ảnh đầu vào',                color: 'bg-slate-600' },
+  { key: 'mask',     label: 'Mặt nạ phân vùng', icon: ScanSearch,  desc: 'Tinh chỉnh UNet++ + LCC',    color: 'bg-blue-600' },
+  { key: 'heatmap',  label: 'Bản đồ nhiệt',      icon: Thermometer, desc: 'Lớp phủ xác suất (JET)',  color: 'bg-orange-500' },
+  { key: 'roi',      label: 'Trích xuất ROI',     icon: Crop,        desc: 'Vùng tổn thương cho bộ phân loại', color: 'bg-indigo-600' },
 ]
 
 export default function ProcessingPipeline({ images }) {
@@ -22,8 +22,8 @@ export default function ProcessingPipeline({ images }) {
             <Brain className="w-4 h-4 text-white" />
           </div>
           <div>
-            <h2 className="text-base font-bold text-gray-900">AI Processing Pipeline</h2>
-            <p className="text-xs text-gray-400">4 visual outputs · click to enlarge</p>
+            <h2 className="text-base font-bold text-gray-900">Quy trình xử lý AI</h2>
+            <p className="text-xs text-gray-400">4 đầu ra trực quan · nhấp để phóng to</p>
           </div>
         </div>
         <button
@@ -31,7 +31,7 @@ export default function ProcessingPipeline({ images }) {
           className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-700 bg-gray-50 hover:bg-gray-100 border border-gray-200 px-3 py-1.5 rounded-xl transition-colors"
         >
           {zoomed ? <ZoomOut className="w-3.5 h-3.5" /> : <ZoomIn className="w-3.5 h-3.5" />}
-          {zoomed ? 'Collapse' : 'Expand'}
+          {zoomed ? 'Thu gọn' : 'Phóng to'}
         </button>
       </div>
 
